@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" id="async-executor" />
+
+    <bean class="org.example.undertow.JettyServer">
+        <constructor-arg name="contextPath" value=""/>
+        <constructor-arg name="deploymentName" value="hello.war"/>
+        <constructor-arg name="servletName" value="hello"/>
+        <constructor-arg name="contextConfigLocation" value="classpath:WEB-INF/hello-servlet.xml"/>
+        <constructor-arg name="mapping" value="/*"/>
+        <constructor-arg name="host" value="localhost"/>
+        <constructor-arg name="port" value="8080"/>
+    </bean>
+
+</beans>
